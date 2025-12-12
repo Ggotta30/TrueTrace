@@ -1,5 +1,7 @@
-import pytest
 from copy import deepcopy
+
+import pytest
+
 
 @pytest.mark.unit
 def test_signature_and_hash_roundtrip(helpers, sign_fn, pubkey_hex):
@@ -13,7 +15,9 @@ def test_signature_and_hash_roundtrip(helpers, sign_fn, pubkey_hex):
 
     # Sanity: required helpers present
     for name in ("canonical_event_bytes", "compute_event_hash", "filtered_for_hash"):
-        pytest.importorskip(f"app.engine.validation.hash_validation", reason=f"{name} missing")
+        pytest.importorskip(
+            "app.engine.validation.hash_validation", reason=f"{name} missing"
+        )
 
     # Minimal event
     event = {

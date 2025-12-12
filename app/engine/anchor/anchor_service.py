@@ -9,13 +9,14 @@ placeholder and writes an 'anchor record' to event_chain.json when invoked.
 Extend this to submit roots to a blockchain, timestamping service, or store receipts.
 """
 import asyncio
-import json
 import hashlib
+import json
 from pathlib import Path
 from typing import List
 
 EVENT_CHAIN_PATH = Path.cwd() / "event_chain.json"
 ANCHOR_RECORD_KEY = "anchors"
+
 
 class AnchorService:
     def __init__(self, interval_seconds: int = 60 * 60):

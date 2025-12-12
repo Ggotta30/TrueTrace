@@ -1,6 +1,6 @@
-import os
 import json
-from typing import Optional, List, Dict
+import os
+from typing import Dict, List, Optional
 
 from app.core.paths import EVENT_DB_FILE
 

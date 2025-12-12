@@ -1,8 +1,9 @@
 # app/api/v1/endpoints/events_chain.py
 
 from fastapi import APIRouter
-from app.engine.validation.validator import EventValidator
+
 from app.engine.state.event_chain import get_all_events
+from app.engine.validation.validator import EventValidator
 
 router = APIRouter()
 validator = EventValidator()
@@ -20,11 +21,13 @@ def read_chain():
     for event in chain:
         is_valid, result = validator.validate(event)
 
-        validated_chain.append({
-            "event": event,
-            "valid": is_valid,
-            "errors": result.get("errors") if not is_valid else None,
-            "computed_hash": result.get("computed_hash"),
-        })
+        validated_chain.append(
+            {
+                "event": event,
+                "valid": is_valid,
+                "errors": result.get("errors") if not is_valid else None,
+                "computed_hash": result.get("computed_hash"),
+            }
+        )
 
     return {"chain_length": len(validated_chain), "chain": validated_chain}

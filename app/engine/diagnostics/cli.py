@@ -1,6 +1,8 @@
 import json
+
 from app.engine.state.event_chain import get_all_events
 from app.engine.validation.validator import EventValidator
+
 
 def run_cli_diagnostics():
     validator = EventValidator()

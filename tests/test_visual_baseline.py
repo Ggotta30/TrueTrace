@@ -1,6 +1,8 @@
 import os
+
 import numpy as np
-from app.engine.visual.frame_hashing import hash_frame_bytes, build_frame_chain_hash
+
+from app.engine.visual.frame_hashing import build_frame_chain_hash, hash_frame_bytes
 from app.engine.visual.motion_analysis import motion_signature_from_frames
 
 

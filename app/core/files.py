@@ -6,6 +6,7 @@ from typing import Any, List
 # JSON LOADERS
 # ------------------------------------------------------------
 
+
 def load_json_file(path: str | Path) -> Any:
     """Load JSON from a file path."""
     path = Path(path)
@@ -14,6 +15,7 @@ def load_json_file(path: str | Path) -> Any:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
+
 # Backwards compatibility
 load_json = load_json_file
 
@@ -21,6 +23,7 @@ load_json = load_json_file
 # ------------------------------------------------------------
 # JSON WRITERS
 # ------------------------------------------------------------
+
 
 def write_json(path: str | Path, data: Any) -> None:
     """Write JSON to a file."""
@@ -33,6 +36,7 @@ def write_json(path: str | Path, data: Any) -> None:
 # ------------------------------------------------------------
 # UTILS
 # ------------------------------------------------------------
+
 
 def list_json_files_sorted(directory: str | Path) -> List[Path]:
     """Return all JSON files sorted alphabetically."""

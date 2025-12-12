@@ -1,22 +1,18 @@
 import json
 from hashlib import sha256
-from typing import Dict, Any
-
+from typing import Any, Dict
 
 # -----------------------------------------------------------
 # Canonicalizer Helpers
 # -----------------------------------------------------------
+
 
 def canonical_json_bytes(obj: Any) -> bytes:
     """
     Converts any JSON-compatible object to stable canonical JSON bytes.
     Removes whitespace, sorts keys, ensures deterministic structure.
     """
-    return json.dumps(
-        obj,
-        sort_keys=True,
-        separators=(",", ":")
-    ).encode("utf-8")
+    return json.dumps(obj, sort_keys=True, separators=(",", ":")).encode("utf-8")
 
 
 def filtered_for_hash(event: Dict[str, Any]) -> Dict[str, Any]:
@@ -25,9 +21,7 @@ def filtered_for_hash(event: Dict[str, Any]) -> Dict[str, Any]:
     Removes signature, public key, and the event's own hash.
     """
     filtered = {
-        k: v
-        for k, v in event.items()
-        if k not in ("hash", "signature", "pubkey")
+        k: v for k, v in event.items() if k not in ("hash", "signature", "pubkey")
     }
     return filtered
 
@@ -35,6 +29,7 @@ def filtered_for_hash(event: Dict[str, Any]) -> Dict[str, Any]:
 # -----------------------------------------------------------
 # NEW REQUIRED FUNCTION
 # -----------------------------------------------------------
+
 
 def canonical_event_bytes(event: Dict[str, Any]) -> bytes:
     """
@@ -52,6 +47,7 @@ def canonical_event_bytes(event: Dict[str, Any]) -> bytes:
 # -----------------------------------------------------------
 # Hashing Function
 # -----------------------------------------------------------
+
 
 def compute_event_hash(event_for_hash: Dict[str, Any]) -> str:
     """

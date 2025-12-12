@@ -9,6 +9,7 @@ sk = SigningKey.generate()
 seed = sk._seed
 pub = sk.verify_key._key
 from pathlib import Path
+
 p = Path(__file__).parent
 (p / "truetrace_priv.bin").write_bytes(seed)
 (p / "truetrace_pub.bin").write_bytes(pub)

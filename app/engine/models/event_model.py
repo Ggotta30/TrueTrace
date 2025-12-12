@@ -1,6 +1,7 @@
 # app/engine/models/event_model.py
-from pydantic import BaseModel
 from typing import Any, Dict
+
+from pydantic import BaseModel
 
 
 class EventModel(BaseModel):

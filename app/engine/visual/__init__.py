@@ -5,9 +5,9 @@ Basic, dependency-light helpers and clear extension points for ML models.
 
 
 __all__ = [
-"frame_extractor",
-"frame_hashing",
-"canonicalizer",
-"motion_analysis",
-"model_base",
+    "frame_extractor",
+    "frame_hashing",
+    "canonicalizer",
+    "motion_analysis",
+    "model_base",
 ]

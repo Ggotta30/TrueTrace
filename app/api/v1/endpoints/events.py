@@ -1,23 +1,20 @@
 # app/api/v1/endpoints/events.py
 
-from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
-from typing import Dict, Any
-from datetime import datetime, timezone
-import uuid
 import hashlib
+import uuid
+from datetime import datetime, timezone
+from typing import Any, Dict
 
+from fastapi import APIRouter, HTTPException
 from nacl.signing import SigningKey
+from pydantic import BaseModel
 
 from app.engine.state.event_chain import get_latest_hash, store_event
-
 from app.engine.validation.hash_validation import (
     canonical_json_bytes,
     filtered_for_hash,
 )
-
 from app.engine.validation.validator import EventValidator
-
 
 # Optional DB persistence helper (if available)
 try:
@@ -40,10 +37,7 @@ def load_private_key(path="data/keys/truetrace_priv.bin") -> SigningKey:
         with open(path, "rb") as f:
             return SigningKey(f.read())
     except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Failed to load private key: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Failed to load private key: {e}")
 
 
 class CreateEventRequest(BaseModel):
@@ -97,10 +91,7 @@ def create_event(req: CreateEventRequest):
         full_event["pubkey"] = pubkey
 
     except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Signing failed: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Signing failed: {e}")
 
     # 6) Validate final event (hash + signature)
     is_valid, result = validator.validate(full_event)

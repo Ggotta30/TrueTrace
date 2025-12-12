@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -7,7 +8,9 @@ from fastapi.testclient import TestClient
 try:
     from app.main import app
 except Exception:
-    import importlib, sys
+    import importlib
+    import sys
+
     base = Path(__file__).resolve().parents[2]
     sys.path.append(str(base))
     app = importlib.import_module("app.main").app

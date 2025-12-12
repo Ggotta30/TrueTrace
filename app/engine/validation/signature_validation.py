@@ -1,14 +1,14 @@
 from typing import Any, Dict
 
-from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
+from nacl.signing import VerifyKey
 
 from app.engine.validation.hash_validation import canonical_event_bytes
-
 
 # -----------------------------------------------------------
 # Raw Ed25519 Verification
 # -----------------------------------------------------------
+
 
 def verify_ed25519(signature_hex: str, message: bytes, pubkey_hex: str) -> bool:
     """
@@ -30,6 +30,7 @@ def verify_ed25519(signature_hex: str, message: bytes, pubkey_hex: str) -> bool:
 # -----------------------------------------------------------
 # High-Level Event Verification
 # -----------------------------------------------------------
+
 
 def verify_signature(event: Dict[str, Any]) -> bool:
     """

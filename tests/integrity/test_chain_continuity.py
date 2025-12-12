@@ -1,5 +1,7 @@
-import pytest
 from copy import deepcopy
+
+import pytest
+
 
 @pytest.mark.integration
 def test_chain_continuity_and_prev_hash(helpers, sign_fn, pubkey_hex):
@@ -46,8 +48,9 @@ def test_chain_continuity_and_prev_hash(helpers, sign_fn, pubkey_hex):
         assert is_valid is True, f"Event {idx} failed validation: {result}"
 
         if idx > 0:
-            assert e["prev_hash"] == chain[idx - 1]["hash"], \
-                "prev_hash mismatch in chain continuity test"
+            assert (
+                e["prev_hash"] == chain[idx - 1]["hash"]
+            ), "prev_hash mismatch in chain continuity test"
 
     # Insert an invalid event in the middle (tamper prev_hash) -> should break continuity
     bad_chain = deepcopy(chain)

@@ -1,6 +1,7 @@
 # app/api/v1/endpoints/health.py
 
 from fastapi import APIRouter
+
 from app.engine.state.event_chain import get_all_events
 from app.engine.validation.validator import EventValidator
 

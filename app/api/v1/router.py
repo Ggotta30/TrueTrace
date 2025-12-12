@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 
-from .endpoints import events, events_read, health
-from .endpoints import diagnostics
+from .endpoints import diagnostics, events, events_read, health
 
 router = APIRouter(prefix="/api/v1")
 

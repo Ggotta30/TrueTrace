@@ -3,7 +3,11 @@ import time
 import uuid
 
 from nacl.signing import SigningKey
-from app.engine.validation.hash_validation import canonical_event_bytes, compute_event_hash
+
+from app.engine.validation.hash_validation import (
+    canonical_event_bytes,
+    compute_event_hash,
+)
 
 
 def load_private_key(path="data/keys/truetrace_priv.bin"):
@@ -16,7 +20,7 @@ def build_event(event_type: str, payload: dict):
         "event_id": f"evt-{uuid.uuid4().hex[:12]}",
         "event_type": event_type,
         "payload": payload,
-        "timestamp": int(time.time() * 1000)
+        "timestamp": int(time.time() * 1000),
     }
 
 

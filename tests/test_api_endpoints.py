@@ -1,5 +1,6 @@
 import pytest
 
+
 @pytest.mark.integration
 def test_health_endpoint(client):
     """Health endpoint should respond 200 and a JSON body."""
@@ -14,10 +15,7 @@ def test_health_endpoint(client):
 @pytest.mark.integration
 def test_create_event_endpoint(client):
     """Create event should accept minimal valid payload."""
-    sample_event = {
-        "event_type": "test",
-        "payload": {"message": "hello from test"}
-    }
+    sample_event = {"event_type": "test", "payload": {"message": "hello from test"}}
 
     resp = client.post("/api/v1/events/create", json=sample_event)
 

@@ -1,5 +1,7 @@
-import pytest
 from copy import deepcopy
+
+import pytest
+
 
 @pytest.mark.flaky
 def test_mass_chain_sign_and_verify(helpers, sign_fn, pubkey_hex):

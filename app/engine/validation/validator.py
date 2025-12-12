@@ -1,9 +1,9 @@
 from typing import Any, Dict, Tuple
 
 from app.engine.validation.hash_validation import compute_event_hash
+from app.engine.validation.security_rules import run_security_rules
 from app.engine.validation.signature_validation import verify_signature
 from app.engine.validation.structure import validate_structure
-from app.engine.validation.security_rules import run_security_rules
 
 
 class EventValidator:
@@ -54,7 +54,4 @@ class EventValidator:
         # -------------------------
         # RESULT
         # -------------------------
-        return (len(errors) == 0, {
-            "errors": errors,
-            "computed_hash": computed_hash
-        })
+        return (len(errors) == 0, {"errors": errors, "computed_hash": computed_hash})

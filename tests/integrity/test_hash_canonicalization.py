@@ -1,5 +1,6 @@
 import pytest
 
+
 def test_canonicalization_is_deterministic(helpers):
     """
     Ensure canonical_event_bytes gives the same bytes for semantically identical
@@ -16,7 +17,7 @@ def test_canonicalization_is_deterministic(helpers):
         "origin": "t",
         "trace_id": "x",
         "timestamp": 1,
-        "event_version": "1.5"
+        "event_version": "1.5",
     }
     b = dict(reversed(list(a.items())))  # reorder keys
 

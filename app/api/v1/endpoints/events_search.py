@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from app.engine.chain.chain_reader import get_all_events
 
 router = APIRouter()

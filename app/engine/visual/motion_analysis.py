@@ -4,13 +4,16 @@
 This is intentionally a lightweight, dependency-friendly baseline. It produces
 motion vectors and a simple motion signature useful for physics checks.
 """
+from typing import Dict, List
+
 import numpy as np
-from typing import List, Dict
 from skimage.color import rgb2gray
 from skimage.registration import optical_flow_tvl1
 
 
-def compute_dense_optical_flow(prev_frame: np.ndarray, next_frame: np.ndarray) -> np.ndarray:
+def compute_dense_optical_flow(
+    prev_frame: np.ndarray, next_frame: np.ndarray
+) -> np.ndarray:
     """Compute dense optical flow (TV-L1) between two RGB frames.
 
     Returns a float32 array shape (H, W, 2) containing flow vectors.

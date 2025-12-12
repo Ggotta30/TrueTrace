@@ -7,9 +7,10 @@ Rules enforced here:
 - remove audio (handled at ingestion)
 - frame ordering deterministic
 """
-from PIL import Image
-import numpy as np
 from typing import Tuple
+
+import numpy as np
+from PIL import Image
 
 
 def canonicalize_frame_bytes(

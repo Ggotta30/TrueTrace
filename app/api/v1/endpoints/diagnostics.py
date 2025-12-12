@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from app.engine.state.event_chain import get_all_events
 from app.engine.validation.validator import EventValidator
 
@@ -47,12 +48,14 @@ def diagnostics():
 
         # Attach the results
         if event_issues:
-            issues.append({
-                "index": i,
-                "event_id": event_id,
-                "issues": event_issues,
-                "computed_hash": result.get("computed_hash"),
-            })
+            issues.append(
+                {
+                    "index": i,
+                    "event_id": event_id,
+                    "issues": event_issues,
+                    "computed_hash": result.get("computed_hash"),
+                }
+            )
 
         last_hash = result.get("computed_hash")
 

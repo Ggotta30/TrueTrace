@@ -13,18 +13,21 @@ if str(ROOT) not in sys.path:
 
 # Now safe to import app modules
 from app.core.paths import CHAIN_FILE
-from app.engine.validation.hash_validation import compute_event_hash, canonical_event_bytes
 from app.engine.state.event_chain import get_all_events
+from app.engine.validation.hash_validation import (
+    canonical_event_bytes,
+    compute_event_hash,
+)
 
 # Keys
 KEY_DIR = ROOT / "data" / "keys"
 PRIV_KEY_FILE = KEY_DIR / "truetrace_priv.bin"
 
 
-
 def load_private_key():
     """Load Ed25519 private key for signing."""
     import nacl.signing
+
     with open(PRIV_KEY_FILE, "rb") as f:
         return nacl.signing.SigningKey(f.read())
 

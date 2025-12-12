@@ -7,12 +7,15 @@ Primary responsibilities:
 - yield canonical frames and timestamps
 - graceful handling of variable framerate / corrupt frames
 """
-from typing import Iterator, Tuple, Optional
+from typing import Iterator, Optional, Tuple
+
 import imageio
 import numpy as np
 
 
-def extract_frames(path: str, target_fps: Optional[float] = None) -> Iterator[Tuple[int, bytes]]:
+def extract_frames(
+    path: str, target_fps: Optional[float] = None
+) -> Iterator[Tuple[int, bytes]]:
     """Yield (frame_index, rgb_bytes) for each canonicalized frame.
 
     If target_fps is provided, frames are sampled/resampled to match (best-effort).
